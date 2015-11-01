@@ -1,0 +1,36 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<title>Login</title>
+</head>
+
+<body role="document" onload="$('input[name=username]').focus();">
+	<div layout:fragment="content">
+		<div class="container">
+			<div class="content-center ">
+				<div role="alert" th:if="${statusMessage}"
+					th:class="'alert ' + ${statusMessageClass}?: 'alert-info'"
+					th:text="${statusMessage}" />
+				<div role="alert" th:if="${param.logout}" class="alert alert-info">You
+					have been logged out</div>
+				<div role="alert" th:if="${param.error}" class="alert alert-error">Wrong username or password, please try again.</div>
+
+				<h2>Please log in to have full access:</h2>
+				<form name="form" th:action="@{/login}" action="/login"
+					method="POST">
+					<fieldset>
+						<input type="text" name="username" value="" placeholder="Username" />
+						<input type="password" name="password" placeholder="Password" />
+					</fieldset>
+					<br /> <input type="submit" value="Login"
+						class="btn btn-sm btn-default" />
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

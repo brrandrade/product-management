@@ -1,0 +1,90 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout"
+	xmlns:ddl="http://www.thymeleaf.org/dandelion"
+	xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
+<head>
+<title>Products</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="row">
+			<div class="col-md-12 text-right">
+				<!-- Save Alert Messages -->
+				<div th:if="${saveProduct eq 'unsuccess'}">
+					<div class="alert alert-danger alert-dismissible" role="alert">
+						<strong>Error!</strong> Product Data Not Saved.
+					</div>
+				</div>
+				<div th:if="${saveProduct eq 'success'}">
+					<div class="alert alert-success alert-dismissible" role="alert">
+						<strong>Success!</strong> Product Data Saved Successfully.
+					</div>
+				</div>
+
+				<!-- Deletion Alert Messages -->
+				<div th:if="${deletion eq 'unsuccess'}">
+					<div class="alert alert-danger alert-dismissible" role="alert">
+						<strong>Error!</strong> Product Data Not Deleted.
+					</div>
+				</div>
+				<div th:if="${deletion eq 'success'}">
+					<div class="alert alert-success alert-dismissible" role="alert">
+						<strong>Success!</strong> Product Data Deleted Successfully.
+					</div>
+				</div>
+
+				<!-- Edit Alert Message -->
+				<div th:if="${edit eq 'notfound'}">
+					<div class="alert alert-danger alert-dismissible" role="alert">
+						<strong>Error!</strong> Invalid Product.
+					</div>
+				</div>
+				<div th:if="${edit eq 'unsuccess'}">
+					<div class="alert alert-danger alert-dismissible" role="alert">
+						<strong>Error!</strong> Product Data Not Edited.
+					</div>
+				</div>
+				<div th:if="${edit eq 'success'}">
+					<div class="alert alert-success alert-dismissible" role="alert">
+						<strong>Success!</strong> Product Data Edited Successfully.
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<br />
+		<div class="row" style="margin-bottom: 50px;">
+			<div class=" col-md-12">
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+						<a th:href="@{/product/new}" type="button"
+							class="btn btn-primary pull-right">Add Product</a>
+						<h3 class="panel-title">Products</h3>
+
+
+
+					</div>
+					<div class="panel-body">
+
+						<table id="products" dt:table="true" dt:serverSide="true"
+							dt:url="@{/ajax/products}" class="display">
+							<thead>
+								<tr>
+									<th dt:property="name">Name</th>
+									<th dt:property="description">Description</th>
+									<th dt:property="price" dt:renderFunction="toCurrency">Price</th>
+									<th dt:property="category.name">Category</th>
+									<th dt:property="available" dt:renderFunction="toHumanBoolean">Available</th>
+									<th dt:property="id" dt:renderFunction="toOperation">Operation</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

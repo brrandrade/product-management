@@ -1,0 +1,23 @@
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					sec:authorize="!isAnonymous()" class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand">Shop</a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="/" ><span
+						class="glyphicon glyphicon-search"></span> Products</a></li>
+				<li sec:authorize="!isAnonymous()"><a href="/logout"
+					th:href="@{/logout}" title="Logout"><span
+						class="glyphicon glyphicon-remove"></span>Logout</a></li>
+			</ul>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+.panel-heading {
+	height: 56px;
+}
+
+.panel-heading h3 {
+	font-size: 30px;
+}
+
+.navbar-fixed-top .navbar-text a {
+	font-size: 40px;
+	color: white;
+}
+
+.navbar .container {
+	margin-top: 7px;
+}
+.content-center {
+    padding: 40px 15px;
+    text-align: center;
+}
