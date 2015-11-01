@@ -54,7 +54,7 @@ Note, this project was created with Spring Tool suite (STS) and it doesn't mean 
 
 Running the project
 
-### Package
+### Build
 
 	mvn package
       
