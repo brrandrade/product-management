@@ -17,7 +17,7 @@ With this project you will have a clean interface to manage your products using 
  - Jquery
  
  
- You can browse the [javadoc](https://github.com/brrandrade/product-management/apidocs/index.html) for more information, including example usages.
+ You can browse the [javadoc](http://brrandrade.github.io/product-management/apidocs/index.html) for more information, including example usages.
 
 ##Functional features:
 
