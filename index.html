@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Product-management by brrandrade</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Product-management</h1>
+      <h2 class="project-tagline">Manage your list of products (add, edit, delete)</h2>
+      <a href="https://github.com/brrandrade/product-management" class="btn">View on GitHub</a>
+      <a href="https://github.com/brrandrade/product-management/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/brrandrade/product-management/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="product-management" class="anchor" href="#product-management" aria-hidden="true"><span class="octicon octicon-link"></span></a>Product Management</h1>
+
+<p>With this project you will have a clean interface to manage your products using power libraries as:</p>
+
+<ul>
+<li>Spring Boot</li>
+<li>Spring Data JPA </li>
+<li>Spring Security</li>
+<li>Thymeleaf</li>
+<li>Dandelion </li>
+<li>Jsoup</li>
+<li>Mysql </li>
+<li>H2 </li>
+<li>Maven </li>
+<li>Junit4</li>
+<li>Slf4j</li>
+<li>Bootstrap</li>
+<li>
+<p>Jquery</p>
+
+<p>You can browse the <a href="https://github.com/brrandrade/product-management/apidocs/index.html">javadoc</a> for more information, including example usages.</p>
+</li>
+</ul>
+
+<h2>
+<a id="functional-features" class="anchor" href="#functional-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Functional features:</h2>
+
+<ul>
+<li>Super user to modify data on server side</li>
+<li>Operations allowed
+
+<ul>
+<li>Create</li>
+<li>Update</li>
+<li>Delete</li>
+<li>Read</li>
+</ul>
+</li>
+<li>Listing products with pagination, sort and filter on server side process</li>
+<li>Anonymous user can list all products</li>
+</ul>
+
+<h2>
+<a id="sts-dev-details" class="anchor" href="#sts-dev-details" aria-hidden="true"><span class="octicon octicon-link"></span></a>STS Dev Details</h2>
+
+<p><img src="sts-dev.png" alt=""></p>
+
+<p>Main class 
+<code>com.engyes.product.ProductManagementApplication</code> defined as</p>
+
+<div class="highlight highlight-source-java"><pre>@ComponentScan( <span class="pl-s"><span class="pl-pds">"</span>com.engyes.product<span class="pl-pds">"</span></span> )
+@<span class="pl-smi">Configuration</span>
+@<span class="pl-smi">EnableAutoConfiguration</span>
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">ProductManagementApplication</span> {
+
+    <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">void</span> <span class="pl-en">main</span>( <span class="pl-k">String</span>[] <span class="pl-v">args</span> ) {
+        <span class="pl-smi">SpringApplication</span><span class="pl-k">.</span>run( <span class="pl-smi">ProductManagementApplication</span><span class="pl-k">.</span>class, args );
+    }
+}</pre></div>
+
+<p>As you can see the project is clean, it uses the Spring Boot feature to autoconfigure the most of services used, others are customized in others classes.</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Note, this project was created with Spring Tool suite (STS) and it doesn't mean you can't use others IDEs as (InteliJ, Eclipse....)</p>
+
+<p>Running the project</p>
+
+<h3>
+<a id="build" class="anchor" href="#build" aria-hidden="true"><span class="octicon octicon-link"></span></a>Build</h3>
+
+<pre><code>mvn package
+</code></pre>
+
+<p>then check <code>target</code> directory for update project archive <code>product-management-x.x.x-SNAPSHOT.jar</code>.</p>
+
+<h3>
+<a id="dev-profile" class="anchor" href="#dev-profile" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dev profile</h3>
+
+<p>Working in development profile, you will have h2 database with 500 products on your database every time that you execute it.</p>
+
+<p>Command</p>
+
+<pre><code>mvn spring-boot:run
+</code></pre>
+
+<h3>
+<a id="prod-profile" class="anchor" href="#prod-profile" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prod profile</h3>
+
+<p>First time in production, you will need to import the schema on your mysql database, for that, you only need to start the application with command below.</p>
+
+<pre><code>SPRING_PROFILES_ACTIVE=production mvn spring-boot:run -Dspring.datasource.initialize=true
+</code></pre>
+
+<p>or</p>
+
+<pre><code>java -jar -Dspring.profiles.active=production -Dspring.datasource.initialize=true product-management-x.x.x-SNAPSHOT.jar 
+</code></pre>
+
+<p>For next time, you will have to use the command below to not modify the database</p>
+
+<pre><code>SPRING_PROFILES_ACTIVE=production mvn spring-boot:run
+</code></pre>
+
+<p>or</p>
+
+<pre><code>java -jar -Dspring.profiles.active=production product-management-x.x.x-SNAPSHOT.jar 
+</code></pre>
+
+<h3>
+<a id="test" class="anchor" href="#test" aria-hidden="true"><span class="octicon octicon-link"></span></a>Test</h3>
+
+<pre><code>mvn test
+</code></pre>
+
+<p>It will run the full integrate test on project</p>
+
+<h3>
+<a id="history" class="anchor" href="#history" aria-hidden="true"><span class="octicon octicon-link"></span></a>History</h3>
+
+<ul>
+<li>1.0 Initial version</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/brrandrade/product-management">Product-management</a> is maintained by <a href="https://github.com/brrandrade">brrandrade</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
