@@ -60,11 +60,11 @@ public class ProductController {
 
 	/** The product service. */
 	@Autowired
-	ProductServiceInterface productService;
+	private ProductServiceInterface productService;
 	
 	/** The category service. */
 	@Autowired
-	CategoryServiceInterface categoryService;
+	private CategoryServiceInterface categoryService;
 
 	/**
 	 * Sets the allowed fields.
