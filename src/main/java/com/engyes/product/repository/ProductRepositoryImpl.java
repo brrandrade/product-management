@@ -9,18 +9,27 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import com.engyes.product.model.Product;
+import com.engyes.product.model.ProductEntity;
 import com.engyes.product.util.RepositoryUtils;
 import com.github.dandelion.datatables.core.ajax.ColumnDef;
 import com.github.dandelion.datatables.core.ajax.DatatablesCriterias;
 
-public class ProductRepositoryImpl implements ProductRepositoryCustom {
+/**
+ * The Class ProductRepositoryImpl.
+ *
+ * @author  Bruno Andrade
+ */
+class ProductRepositoryImpl implements ProductRepositoryCustom {
 
+	/** The entity manager. */
 	@PersistenceContext
 	private EntityManager entityManager;
 
+	/* (non-Javadoc)
+	 * @see com.engyes.product.repository.ProductRepositoryCustom#findProductsWithDatatablesCriterias(com.github.dandelion.datatables.core.ajax.DatatablesCriterias)
+	 */
 	@Override
-	public List<Product> findProductsWithDatatablesCriterias( DatatablesCriterias criterias ) {
+	public List<ProductEntity> findProductsWithDatatablesCriterias( DatatablesCriterias criterias ) {
 
 		StringBuilder queryBuilder = new StringBuilder( "SELECT p FROM Product p" );
 
@@ -43,7 +52,8 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 			}
 		}
 
-		TypedQuery<Product> query = entityManager.createQuery( queryBuilder.toString(), Product.class );
+		TypedQuery<ProductEntity> query = entityManager.createQuery( queryBuilder.toString(),
+				ProductEntity.class );
 
 		query.setFirstResult( criterias.getStart() );
 		query.setMaxResults( criterias.getLength() );
@@ -51,6 +61,9 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 		return query.getResultList();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.engyes.product.repository.ProductRepositoryCustom#getFilteredCount(com.github.dandelion.datatables.core.ajax.DatatablesCriterias)
+	 */
 	@Override
 	public Long getFilteredCount( DatatablesCriterias criterias ) {
 
@@ -62,6 +75,9 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 		return Long.parseLong( String.valueOf( query.getResultList().size() ) );
 	}
 
+	/* (non-Javadoc)
+	 * @see com.engyes.product.repository.ProductRepositoryCustom#getTotalCount()
+	 */
 	@Override
 	public Long getTotalCount() {
 		Query query = entityManager.createQuery( "SELECT COUNT(p) FROM Product p" );

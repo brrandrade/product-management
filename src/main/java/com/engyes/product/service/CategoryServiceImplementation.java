@@ -1,29 +1,41 @@
 package com.engyes.product.service;
 
-import java.util.List;
+import java.util.Collection;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.engyes.product.model.Category;
+import com.engyes.product.model.CategoryEntity;
 import com.engyes.product.repository.CategoryRepository;
 
+/**
+ * The Class CategoryServiceImplementation.
+ *
+ * @author  Bruno Andrade
+ */
 @Service
 @Transactional
-public class CategoryServiceImplementation implements CategoryServiceInterface {
+class CategoryServiceImplementation implements CategoryServiceInterface {
 
+	/** The category repository. */
 	@Autowired
-	protected CategoryRepository categoryRepository;
+	private CategoryRepository categoryRepository;
 
+	/* (non-Javadoc)
+	 * @see com.engyes.product.service.CategoryServiceInterface#findAllSorted()
+	 */
 	@Override
-	public List<Category> findAllSorted() {
-		return (List<Category>)categoryRepository.findAllSorted();
+	public Collection<CategoryEntity> findAllSorted() {
+		return  categoryRepository.findAllSorted();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.engyes.product.service.CategoryServiceInterface#saveCategory(com.engyes.product.model.CategoryEntity)
+	 */
 	@Override
-	public Category saveCategory( Category cat ) {
+	public CategoryEntity saveCategory( CategoryEntity cat ) {
 		return categoryRepository.save( cat );
 	}
 

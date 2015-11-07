@@ -2,24 +2,62 @@ package com.engyes.product.service;
 
 import java.util.Collection;
 
-import com.engyes.product.model.Product;
+import com.engyes.product.model.ProductEntity;
 import com.github.dandelion.datatables.core.ajax.DataSet;
 import com.github.dandelion.datatables.core.ajax.DatatablesCriterias;
 
+/**
+ * The Interface ProductServiceInterface.
+ *
+ * @author  Bruno Andrade
+ */
 public interface ProductServiceInterface {
 
-	public Product saveProduct( Product prod );
+	/**
+	 * Save product.
+	 *
+	 * @param prod the prod
+	 * @return the product entity
+	 */
+	ProductEntity saveProduct( ProductEntity prod );
 
-	public Boolean deleteProduct( Long prodId );
+	/**
+	 * Delete product.
+	 *
+	 * @param prodId the prod id
+	 * @return the boolean
+	 */
+	Boolean deleteProduct( Long prodId );
 
-	public Product editProduct( Product prod );
+	/**
+	 * Edits the product.
+	 *
+	 * @param prod the prod
+	 * @return the product entity
+	 */
+	ProductEntity editProduct( ProductEntity prod );
 
-	public Product findProduct( Long prodId );
+	/**
+	 * Find product.
+	 *
+	 * @param prodId the prod id
+	 * @return the product entity
+	 */
+	ProductEntity findProduct( Long prodId );
 
-	public Collection<Product> findProductByName( String name );
+	/**
+	 * Find all.
+	 *
+	 * @return the collection
+	 */
+	Collection<ProductEntity> findAll();
 
-	public Collection<Product> findAll();
-
-	public DataSet<Product> findProductsWithDatatablesCriterias( DatatablesCriterias criterias );
+	/**
+	 * Find products with datatables criterias.
+	 *
+	 * @param criterias the criterias
+	 * @return the data set
+	 */
+	DataSet<ProductEntity> findProductsWithDatatablesCriterias( DatatablesCriterias criterias );
 
 }

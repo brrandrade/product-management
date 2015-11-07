@@ -24,7 +24,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
-import com.engyes.product.model.Category;
+import com.engyes.product.model.CategoryEntity;
 import com.engyes.product.service.CategoryServiceInterface;
 
 @Component
@@ -62,7 +62,7 @@ public class Fixture {
 	}
 
 	public void insertCategory() {
-		Category cat = new Category();
+		CategoryEntity cat = new CategoryEntity();
 		cat.setName( "Laptop" );
 		categoryService.saveCategory( cat );
 	}

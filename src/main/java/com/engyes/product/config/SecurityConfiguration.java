@@ -12,23 +12,36 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+/**
+ * The Class SecurityConfiguration defined the security of the application 
+ * with just one super user
+ *
+ * @author  Bruno Andrade
+ */
 @Configuration
 @EnableWebMvcSecurity
 @Order( Ordered.HIGHEST_PRECEDENCE )
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+	/** The Constant UNSECURED_RESOURCE_LIST. */
 	private static final String[] UNSECURED_RESOURCE_LIST = new String[] { "/resources/**", "/assets/**",
 			"/css/**", "/webjars/**", "/images/**", "/dandelion-assets/**", "/dandelion/**",
 			"/ddl-debugger/**", "/ajax/**" };
 
-	private static final String[] UNAUTHORIZED_RESOURCE_LIST = new String[] { "/test.html", "/",
-			"/unauthorized", "/error*", "/users*" };
+	/** The Constant UNAUTHORIZED_RESOURCE_LIST. */
+	private static final String[] UNAUTHORIZED_RESOURCE_LIST = new String[] { "/", "/error*", };
 
+	/* (non-Javadoc)
+	 * @see org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter#configure(org.springframework.security.config.annotation.web.builders.WebSecurity)
+	 */
 	@Override
 	public void configure( WebSecurity web ) throws Exception {
 		web.ignoring().antMatchers( UNSECURED_RESOURCE_LIST );
 	}
 
+	/* (non-Javadoc)
+	 * @see org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter#configure(org.springframework.security.config.annotation.web.builders.HttpSecurity)
+	 */
 	@Override
 	protected void configure( HttpSecurity http ) throws Exception {
 		// @formatter:off
@@ -57,6 +70,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // @formatter:on
 	}
 
+	/**
+	 * Configure global.
+	 *
+	 * @param auth the auth
+	 * @param user the user
+	 * @param pwd the pwd
+	 * @throws Exception the exception
+	 */
 	@Autowired
 	public void configureGlobal( AuthenticationManagerBuilder auth, @Value( "${access.user}" ) String user,
 			@Value( "${access.pwd}" ) String pwd) throws Exception {

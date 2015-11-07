@@ -78,7 +78,7 @@
 					<td>
 						<div class="control-group">
 							<select class="form-control" th:field="*{category}">
-								<option th:each="c : ${cats}" th:text="${c.name}"
+								<option th:each="c : ${categories}" th:text="${c.name}"
 									th:value="${c.id}">[option]</option>
 							</select> <label class="control-label" th:errors="*{category}">[error]</label>
 						</div>

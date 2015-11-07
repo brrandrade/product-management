@@ -8,11 +8,25 @@ import com.github.dandelion.core.util.StringUtils;
 import com.github.dandelion.datatables.core.ajax.ColumnDef;
 import com.github.dandelion.datatables.core.ajax.DatatablesCriterias;
 
+/**
+ * The Class RepositoryUtils format criterias to interact with Dandelion.
+ *
+ * @author  Bruno Andrade
+ */
 public class RepositoryUtils {
 
+	/**
+	 * Instantiates a new repository utils.
+	 */
 	private RepositoryUtils() {
 	}
 
+	/**
+	 * Gets the filter query.
+	 *
+	 * @param criterias the criterias
+	 * @return the filter query
+	 */
 	public static StringBuilder getFilterQuery( DatatablesCriterias criterias ) {
 		StringBuilder queryBuilder = new StringBuilder();
 		List<String> paramList = new ArrayList<String>();
@@ -78,7 +92,8 @@ public class RepositoryUtils {
 		return queryBuilder;
 	}
 
-	public static boolean filterColumns( ColumnDef columnDef ) {
+ 
+	private static boolean filterColumns( ColumnDef columnDef ) {
 		return "name".equalsIgnoreCase( columnDef.getName() )
 				|| "description".equalsIgnoreCase( columnDef.getName() )
 				|| "category.name".equalsIgnoreCase( columnDef.getName() );

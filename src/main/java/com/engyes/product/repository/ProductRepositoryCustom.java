@@ -2,15 +2,37 @@ package com.engyes.product.repository;
 
 import java.util.List;
 
-import com.engyes.product.model.Product;
+import com.engyes.product.model.ProductEntity;
 import com.github.dandelion.datatables.core.ajax.DatatablesCriterias;
 
-public interface ProductRepositoryCustom {
+/**
+ * The Interface ProductRepositoryCustom.
+ *
+ * @author  Bruno Andrade
+ */
+interface ProductRepositoryCustom {
 
-	public List<Product> findProductsWithDatatablesCriterias( DatatablesCriterias criterias );
+	/**
+	 * Find products with datatables criterias.
+	 *
+	 * @param criterias the criterias
+	 * @return the list
+	 */
+	List<ProductEntity> findProductsWithDatatablesCriterias( DatatablesCriterias criterias );
 
-	public Long getFilteredCount( DatatablesCriterias criterias );
+	/**
+	 * Gets the filtered count.
+	 *
+	 * @param criterias the criterias
+	 * @return the filtered count
+	 */
+	Long getFilteredCount( DatatablesCriterias criterias );
 
-	public Long getTotalCount();
+	/**
+	 * Gets the total count.
+	 *
+	 * @return the total count
+	 */
+	Long getTotalCount();
 
 }

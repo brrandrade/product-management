@@ -15,6 +15,9 @@ With this project you will have a clean interface to manage your products using 
  - Slf4j
  - Bootstrap
  - Jquery
+ 
+ 
+ You can browse the [javadoc](https://github.com/brrandrade/request-api/apidocs/index.html) for more information, including example usages.
 
 ##Functional features:
 

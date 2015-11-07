@@ -5,11 +5,11 @@
 
 	<groupId>com.engyes</groupId>
 	<artifactId>product-management</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
 	<name>product-management</name>
-	<description></description>
+	<description>Manage your products</description>
 
 	<developers>
 		<developer>
@@ -18,12 +18,20 @@
 		</developer>
 	</developers>
 
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.2.7.RELEASE</version>
 		<relativePath />
 	</parent>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -84,6 +92,7 @@
 			<artifactId>datatables-thymeleaf</artifactId>
 			<version>${dandelion.datatables.version}</version>
 		</dependency>
+		<!-- Fix the bug on the older version https://github.com/dandelion/dandelion/issues/66 -->
 		<dependency>
 			<groupId>com.github.dandelion</groupId>
 			<artifactId>dandelion-core</artifactId>
@@ -103,7 +112,17 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<additionalparam>-Xdoclint:all</additionalparam>
+					<additionalparam>-Xdoclint:-missing</additionalparam>
+					<noqualifier>all</noqualifier>
+				</configuration>
+			</plugin>
 		</plugins>
+
 	</build>
 
 
